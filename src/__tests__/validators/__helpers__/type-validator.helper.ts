@@ -9,8 +9,9 @@ import { printIfNotExpected } from './test.helper'
 export const typeHasNoErrors = async <T>(
   validator: Validator<T>,
   type: DataTypes,
+  override?: T,
 ) => {
-  const valid = pickMockDataToValidate<T>(type)
+  const valid = pickMockDataToValidate<T>(type, override)
   const { label, value } = valid
   const result = await validator.validate(value, false, label, [label])
   const expected = result?.get([label]) === undefined
