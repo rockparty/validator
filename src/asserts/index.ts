@@ -1,2 +1,5 @@
 export * from './assert-is-validated'
 export * from './assert-is-validate-error'
+export * from './assert-is-array-of-string'
+export * from './assert-is-array-of-validate-error'
+export * from './assert-is-validate-error-map'
