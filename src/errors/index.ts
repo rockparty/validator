@@ -1,1 +1,5 @@
 export * from './type.error'
+export * from './not-a-number.error'
+export * from './not-a-string.error'
+export * from './not-a-object.error'
+export * from './min-string-length.error'

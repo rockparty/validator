@@ -1,16 +1,12 @@
-import type { Validated, ValidateError } from '@/protocols'
+import { validateErrorFactory } from '@/factories'
+import type { ValidateErrorFactoryFn } from '@/protocols'
 
-export const typeError = (
-  validated: Validated,
-  type: string,
-  message?: string,
-): ValidateError => {
+export const typeError = (type: string): ValidateErrorFactoryFn => {
   const [firstChar, ...restOfChars] = type
   const typeCapitalized =
     firstChar.toUpperCase() + restOfChars.join('').toLowerCase()
-  return {
+  return validateErrorFactory({
     name: `${typeCapitalized}TypeError`,
-    reason: message ?? `Value must be of ${type.toLowerCase()} type`,
-    validated,
-  }
+    reason: `Value must be of ${type.toLowerCase()} type`,
+  })
 }

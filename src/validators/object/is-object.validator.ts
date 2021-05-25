@@ -2,12 +2,12 @@
 
 import { assertIsObject } from '@/asserts'
 import { createValidatorDecorator } from '@/decorators'
-import { typeError } from '@/errors'
+import { notAObjectError } from '@/errors'
 
 export const isObjectValidator = createValidatorDecorator<
   Record<PropertyKey, any>
 >(async (toValidate) => {
   const { value } = toValidate
   if (assertIsObject(value)) return
-  return typeError(toValidate, 'object')
+  return notAObjectError(toValidate)
 })

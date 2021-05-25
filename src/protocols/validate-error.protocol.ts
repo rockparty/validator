@@ -13,3 +13,8 @@ export interface ValidateError {
 }
 
 export type ValidateErrorMap = Map<string[] | undefined, ValidateError[]>
+
+export type ValidateErrorFactoryFn = (
+  validated: Validated,
+  customReason?: string,
+) => ValidateError
