@@ -5,14 +5,14 @@ import type {
   Validator,
 } from '@/protocols'
 
-export const createValidator = <T>(
-  validateFn: ValidateFn<T>,
-): Validator<T> => ({
+export const createValidator = <ToValidate>(
+  validateFn: ValidateFn<ToValidate>,
+): Validator<ToValidate> => ({
   validate: (
-    x: T,
+    toValidate: ToValidate,
     once?: boolean,
     key?: string,
     path?: string[],
     errors?: ValidateErrorMap,
-  ): ValidateFnReturnType => validateFn(x, once, key, path, errors),
+  ): ValidateFnReturnType => validateFn(toValidate, once, key, path, errors),
 })
