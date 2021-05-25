@@ -4,7 +4,8 @@ import { notAStringError } from '@/errors'
 
 export const isStringValidator = createValidatorDecorator<string>(
   async (toValidate) => {
-    if (assertIsString(toValidate)) return
-    return notAStringError(toValidate)
+    const { value } = toValidate
+    if (assertIsString(value)) return
+    return notAStringError(value)
   },
 )

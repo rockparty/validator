@@ -4,6 +4,7 @@ import { minLengthError } from '@/errors'
 
 export const stringHasMinLength = (min: number): Validator<string> =>
   createValidatorDecorator(async (toValidate) => {
-    if ((toValidate.value as string).length >= min) return
-    return minLengthError(min)(toValidate)
+    const { value } = toValidate
+    if ((value as string).length >= min) return
+    return minLengthError(min)(value)
   })

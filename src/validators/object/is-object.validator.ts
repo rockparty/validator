@@ -9,5 +9,5 @@ export const isObjectValidator = createValidatorDecorator<
 >(async (toValidate) => {
   const { value } = toValidate
   if (assertIsObject(value)) return
-  return notAObjectError(toValidate)
+  return notAObjectError(value)
 })

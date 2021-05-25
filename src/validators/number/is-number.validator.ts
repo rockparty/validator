@@ -4,7 +4,8 @@ import { notANumberError } from '@/errors'
 
 export const isNumberValidator = createValidatorDecorator<number>(
   async (toValidate) => {
-    if (assertIsNumber(toValidate)) return
-    return notANumberError(toValidate)
+    const { value } = toValidate
+    if (assertIsNumber(value)) return
+    return notANumberError(value)
   },
 )
