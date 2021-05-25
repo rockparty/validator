@@ -1,5 +1,5 @@
 import type { ValidateDecoratorFn, Validator } from '@/protocols'
-import { createValidator } from '@/factories'
+import { createValidator, validateErrorMapFactory } from '@/factories'
 
 export const createValidatorDecorator = <T>(
   validate: ValidateDecoratorFn,
@@ -8,12 +8,13 @@ export const createValidatorDecorator = <T>(
     const toValidate = { value: x, key, path }
     const error = await validate(toValidate)
     if (!error) return
-    if (!errors) errors = new Map()
-    return errors.set(path, [
-      ...(errors.get(path) ?? []),
+    errors = validateErrorMapFactory(
       {
         ...error,
         validated: toValidate,
       },
-    ])
+      path,
+      errors,
+    )
+    return errors
   })

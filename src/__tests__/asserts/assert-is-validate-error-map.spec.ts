@@ -1,14 +1,16 @@
 import { assertIsValidateErrorMap } from '@/asserts'
-import type { ValidateError, ValidateErrorMap } from '@/protocols'
+import { validateErrorMapFactory } from '@/factories'
 
 describe('AssertIsValidateErrorMap', () => {
   it('should be true', () => {
-    const valid: ValidateErrorMap = new Map<
-      string[] | undefined,
-      ValidateError[]
-    >([
-      [['foo'], [{ name: 'foo', reason: 'any', validated: { value: 'foo' } }]],
-    ])
+    const valid = validateErrorMapFactory(
+      {
+        name: 'foo',
+        reason: 'any',
+        validated: { value: 'foo' },
+      },
+      ['foo'],
+    )
     const result = assertIsValidateErrorMap(valid)
     const expected = result === true
     expect(expected).toBe(true)
