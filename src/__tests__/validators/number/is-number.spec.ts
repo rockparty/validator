@@ -9,7 +9,7 @@ describe('IsObjectValidator', () => {
   const makeSut = () => {
     const type: DataTypes = 'number'
     return {
-      sut: isNumberValidator,
+      sut: isNumberValidator(),
       type,
     }
   }
