@@ -2,17 +2,17 @@ import type { ValidateErrorMap } from './validate-error.protocol'
 
 export type ValidateFnReturnType = Promise<undefined | ValidateErrorMap>
 
-export type ValidateFn<T> = (
-  x: T,
+export type ValidateFn<ToValidate> = (
+  toValidate: ToValidate,
   once?: boolean,
   key?: string,
   path?: string[],
   errors?: ValidateErrorMap,
 ) => ValidateFnReturnType
 
-export interface Validator<T> {
+export interface Validator<ToValidate> {
   validate: (
-    x: T,
+    toValidate: ToValidate,
     once?: boolean,
     key?: string,
     path?: string[],
