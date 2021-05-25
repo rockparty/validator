@@ -1,9 +1,10 @@
+import { assertIsString } from '@/asserts'
 import { createValidatorDecorator } from '@/decorators'
 import { typeError } from '@/errors'
 
 export const isStringValidator = createValidatorDecorator<string>(
   async (toValidate) => {
-    if (typeof toValidate.value === 'string') return
+    if (assertIsString(toValidate)) return
     return typeError(toValidate, 'string')
   },
 )
