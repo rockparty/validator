@@ -3,7 +3,7 @@
 export interface Validated {
   value: any
   key?: string
-  path?: string[]
+  path?: string
 }
 
 export interface ValidateError {
@@ -12,7 +12,7 @@ export interface ValidateError {
   validated: Validated
 }
 
-export type ValidateErrorMap = Map<string[] | undefined, ValidateError[]>
+export type ValidateErrorMap = Map<string | undefined, ValidateError[]>
 
 export type ValidateErrorFactoryFn = (
   validated: Validated,

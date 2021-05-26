@@ -4,7 +4,7 @@ import type { ValidateError, ValidateErrorMap } from '@/protocols'
 
 export const validateErrorMapFactory = (
   newErrors?: ValidateError | ValidateError[] | ValidateErrorMap,
-  path?: string[],
+  path?: string,
   currentErrors?: ValidateErrorMap,
 ): ValidateErrorMap | undefined => {
   let errors: ValidateErrorMap | undefined = currentErrors

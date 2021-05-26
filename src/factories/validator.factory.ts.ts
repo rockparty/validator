@@ -12,7 +12,7 @@ export const createValidator = <ToValidate>(
     toValidate: ToValidate,
     once?: boolean,
     key?: string,
-    path?: string[],
+    path?: string,
     errors?: ValidateErrorMap,
   ): ValidateFnReturnType => validateFn(toValidate, once, key, path, errors),
 })

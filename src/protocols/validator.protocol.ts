@@ -6,7 +6,7 @@ export type ValidateFn<ToValidate> = (
   toValidate: ToValidate,
   once?: boolean,
   key?: string,
-  path?: string[],
+  path?: string,
   errors?: ValidateErrorMap,
 ) => ValidateFnReturnType
 
@@ -15,7 +15,7 @@ export interface Validator<ToValidate> {
     toValidate: ToValidate,
     once?: boolean,
     key?: string,
-    path?: string[],
+    path?: string,
     errors?: ValidateErrorMap,
   ) => ValidateFnReturnType
 }

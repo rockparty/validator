@@ -14,7 +14,7 @@ export const typeHasNoErrors = async <T>(
 ) => {
   const valid = pickMockDataToValidate<T>(type, override)
   const { label, value } = valid
-  const result = await validator.validate(value, false, label, [label])
+  const result = await validator.validate(value, false, label, label)
   const expected = !assertIsValidateErrorMap(result)
   printIfNotExpected(expected, result)
   return expected
@@ -30,7 +30,7 @@ export const typeHasErrors = async <T>(
 
   for (const toValidate of invalids) {
     const { label, value } = toValidate
-    const errors = await validator.validate(value, false, label, [label])
+    const errors = await validator.validate(value, false, label, label)
     if (!errors) continue
     errors.forEach((error) => result.push(...error))
   }
