@@ -7,7 +7,7 @@ export const validateErrorMapFactory = (
   path?: string[],
   currentErrors?: ValidateErrorMap,
 ): ValidateErrorMap => {
-  const errors: ValidateErrorMap = new Map()
+  const errors: ValidateErrorMap = new Map(currentErrors ?? [])
   if (newErrors) {
     errors.set(path, [
       ...(currentErrors ? getValidateErrorMapErrors(currentErrors) : []),
