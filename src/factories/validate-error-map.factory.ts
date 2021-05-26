@@ -10,9 +10,9 @@ export const validateErrorMapFactory = (
   const errors: ValidateErrorMap = new Map(currentErrors ?? [])
   if (newErrors) {
     errors.set(path, [
-      ...(currentErrors ? getValidateErrorMapErrors(currentErrors) : []),
+      ...(currentErrors ? getValidateErrorMapErrors(currentErrors, path) : []),
       ...(assertIsValidateErrorMap(newErrors)
-        ? getValidateErrorMapErrors(errors)
+        ? getValidateErrorMapErrors(errors, path)
         : toArray(newErrors)),
     ])
   }
