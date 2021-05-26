@@ -6,15 +6,20 @@ export const validateErrorMapFactory = (
   newErrors?: ValidateError | ValidateError[] | ValidateErrorMap,
   path?: string[],
   currentErrors?: ValidateErrorMap,
-): ValidateErrorMap => {
-  const errors: ValidateErrorMap = new Map(currentErrors ?? [])
+): ValidateErrorMap | undefined => {
+  let errors: ValidateErrorMap | undefined = currentErrors
+    ? new Map(currentErrors)
+    : undefined
+
   if (newErrors) {
+    if (!errors) errors = new Map()
     errors.set(path, [
-      ...(currentErrors ? getValidateErrorMapErrors(currentErrors, path) : []),
+      ...getValidateErrorMapErrors(errors, path),
       ...(assertIsValidateErrorMap(newErrors)
-        ? getValidateErrorMapErrors(errors, path)
+        ? getValidateErrorMapErrors(newErrors, path)
         : toArray(newErrors)),
     ])
   }
+
   return errors
 }
