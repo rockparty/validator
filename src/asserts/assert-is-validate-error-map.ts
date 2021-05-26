@@ -7,7 +7,9 @@ export function assertIsValidateErrorMap(
 ): obj is ValidateErrorMap {
   if (!(obj instanceof Map)) return false
   for (const [path, errors] of obj.entries()) {
-    if (!assertIsArrayOfString(path)) return false
+    if (path) {
+      if (!assertIsArrayOfString(path)) return false
+    }
     if (!assertIsArrayOfValidateError(errors)) return false
   }
   return true
