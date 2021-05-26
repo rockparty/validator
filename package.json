@@ -1,6 +1,6 @@
 {
   "name": "@rockparty/validator",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Data validate",
   "repository": {
     "type": "git",
